@@ -11,7 +11,7 @@ from selenium.common.exceptions import TimeoutException
 # --- 設定區 ---
 # 請依照你截圖中的課號修改
 # 截圖1顯示線性代數是 B5701S60，截圖2報錯的是 B57040QM，請確認你要搶哪一門
-TARGET_COURSE_ID = "B5704M22"
+TARGET_COURSE_ID = "B57040QM"
 
 # 是否啟用重整頁面功能 (True: 重整頁面, False: 等待後重試)
 ENABLE_REFRESH = False
@@ -86,9 +86,6 @@ def grab_course():
                         print("❌ 課程已滿。執行等待策略...")
                         result_alert.accept() # 按下確定關閉彈窗
                         
-                        print("⏳ 等待 10 秒後重試...")
-                        time.sleep(10) # 你的要求：等待 10 秒
-                        
                         if ENABLE_REFRESH:
                             print("🔄 重新整理頁面...")
                             driver.refresh() # 重整頁面以更新狀態
@@ -99,18 +96,10 @@ def grab_course():
                         
                     elif "衝堂" in msg:
                         print("⚠️ 衝堂警告。")
-                        result_alert.accept()
-                        # 衝堂通常不會因為重試而解決，這裡你可以選擇 break 停止或繼續
-                        # 這裡暫時設定為繼續，避免因誤判而停止
-                        if ENABLE_REFRESH:
-                            print("🔄 重新整理頁面...")
-                            driver.refresh()
-                            time.sleep(2)
-                        else:
-                            print(f"⏳ 等待 {WAIT_SECONDS} 秒後重試 (不重整)...")
-                            time.sleep(WAIT_SECONDS)
-                        continue
-
+                        break
+                    elif "已有加選" in msg:
+                        print("⚠️ 已加選該課堂。")
+                        break # 已經加選成功了，跳出無限迴圈
                     else:
                         # 如果沒有出現「額滿」字眼，假設是成功或其他重要訊息
                         print("✅ 可能搶課成功！(或出現未預期訊息)")
@@ -119,7 +108,8 @@ def grab_course():
                         break 
 
                 except TimeoutException:
-                    print("❓ 沒有收到結果彈窗，可能網頁還在跑或已經成功。")
+                    print("加選成功。")
+                    break # 成功後跳出無限迴圈
                     if ENABLE_REFRESH:
                         print("🔄 重新整理頁面...")
                         driver.refresh()
