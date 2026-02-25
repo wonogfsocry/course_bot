@@ -11,7 +11,12 @@ from selenium.common.exceptions import TimeoutException
 # --- 設定區 ---
 # 請依照你截圖中的課號修改
 # 截圖1顯示線性代數是 B5701S60，截圖2報錯的是 B57040QM，請確認你要搶哪一門
-TARGET_COURSE_ID = "B5704M22" 
+TARGET_COURSE_ID = "B5704M22"
+
+# 是否啟用重整頁面功能 (True: 重整頁面, False: 等待後重試)
+ENABLE_REFRESH = False
+# 不重整時的等待秒數
+WAIT_SECONDS = 5 
 
 # --- 連接現有瀏覽器 ---
 options = Options()
@@ -32,9 +37,22 @@ def grab_course():
         while True: # 無限迴圈
             try:
                 print(f"[{time.strftime('%H:%M:%S')}] 正在掃描課程: {TARGET_COURSE_ID}...")
-
+                # 如果上面改了 xpath 還是沒用，請嘗試加入這段
+                # --- 修正步驟 A: 切換視角 (改良版) ---
+                try:
+                    driver.switch_to.default_content() # 先確保回到最外層
+                    
+                    # 這裡我們改用 ID 'mainIFrame' (參考自原本的 HTML)，比用 name 更準確
+                    WebDriverWait(driver, 10).until(
+                        EC.frame_to_be_available_and_switch_to_it((By.ID, "mainIFrame"))
+                    )
+                    
+                except Exception as e:
+                    print(f"⚠️ 切換 Frame 失敗: {e}")
+                    continue
                 # 1. 尋找按鈕
-                xpath_locator = f"//tr[.//td[contains(text(), '{TARGET_COURSE_ID}')]]//a[text()='加選']"
+                # 修改策略：直接尋找 key 屬性中包含課程代碼，且文字為 '加選' 的連結
+                xpath_locator = f"//a[contains(@key, '{TARGET_COURSE_ID}') and contains(text(), '加選')]"
                 add_btn = WebDriverWait(driver, 1).until(
                     EC.element_to_be_clickable((By.XPATH, xpath_locator))
                 )
@@ -71,8 +89,12 @@ def grab_course():
                         print("⏳ 等待 10 秒後重試...")
                         time.sleep(10) # 你的要求：等待 10 秒
                         
-                        print("🔄 重新整理頁面...")
-                        driver.refresh() # 重整頁面以更新狀態
+                        if ENABLE_REFRESH:
+                            print("🔄 重新整理頁面...")
+                            driver.refresh() # 重整頁面以更新狀態
+                        else:
+                            print(f"⏳ 等待 {WAIT_SECONDS} 秒後重試 (不重整)...")
+                            time.sleep(WAIT_SECONDS)
                         continue # 跳過下面程式碼，直接進入下一輪迴圈
                         
                     elif "衝堂" in msg:
@@ -80,8 +102,13 @@ def grab_course():
                         result_alert.accept()
                         # 衝堂通常不會因為重試而解決，這裡你可以選擇 break 停止或繼續
                         # 這裡暫時設定為繼續，避免因誤判而停止
-                        time.sleep(2)
-                        driver.refresh()
+                        if ENABLE_REFRESH:
+                            print("🔄 重新整理頁面...")
+                            driver.refresh()
+                            time.sleep(2)
+                        else:
+                            print(f"⏳ 等待 {WAIT_SECONDS} 秒後重試 (不重整)...")
+                            time.sleep(WAIT_SECONDS)
                         continue
 
                     else:
@@ -93,20 +120,33 @@ def grab_course():
 
                 except TimeoutException:
                     print("❓ 沒有收到結果彈窗，可能網頁還在跑或已經成功。")
-                    driver.refresh()
-                    continue # 重整後繼續下一輪
+                    if ENABLE_REFRESH:
+                        print("🔄 重新整理頁面...")
+                        driver.refresh()
+                    else:
+                        print(f"⏳ 等待 {WAIT_SECONDS} 秒後重試 (不重整)...")
+                        time.sleep(WAIT_SECONDS)
+                    continue # 繼續下一輪
 
             except TimeoutException:
+                with open("debug_page.html", "w", encoding="utf-8") as f:
+                    f.write(driver.page_source)
+                print("已將當下頁面 HTML 存為 debug_page.html")
                 # 找不到加選按鈕 (可能還沒釋出)
                 print("找不到加選按鈕 (可能未釋出或網頁延遲)，重新整理...")
                 time.sleep(2)
-                driver.refresh()
+                #driver.refresh()
                 continue # 重整後繼續下一輪
             
             except Exception as e:
                 print(f"發生錯誤: {e}")
-                driver.refresh() # 錯誤時也重整頁面
-                time.sleep(5) # 等待較長時間避免連續錯誤
+                if ENABLE_REFRESH:
+                    print("🔄 重新整理頁面...")
+                    driver.refresh() # 錯誤時也重整頁面
+                    time.sleep(5)
+                else:
+                    print(f"⏳ 等待 {WAIT_SECONDS} 秒後重試 (不重整)...")
+                    time.sleep(WAIT_SECONDS)
                 continue # 繼續下一輪
                 
     except KeyboardInterrupt:

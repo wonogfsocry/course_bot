@@ -1,0 +1,1015 @@
+<html xmlns="http://www.w3.org/1999/xhtml" class=""><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<noscript>
+    <meta http-equiv="Window-target" content="_top">
+</noscript>
+
+<script>var _vp = '/';var hasReportServerLincese = 'N';/**
+        Ajax頁面載入事件, 處理Gridview的Event        
+*/                                                   
+function pageLoad() {                                
+    try {                                            
+        Grid.setGridEvent();                         
+    }                                                
+    catch (ex) {                                     
+    }                                                
+}                                                    
+</script>
+<style type="text/css">.fancybox-margin{margin-right:15px;}</style></head><body><img src="/images/loading.gif" alt="Loading Bar Icon" style="z-index:99;position:fixed;display:none;" id="__LOADINGBAR"><img src="/images/space.gif" alt="space" id="__SCREEN" style="display: none; width: 1px;">
+<link href="/css/default.css" rel="stylesheet" type="text/css">
+<script src="/script/jquery-3.7.0.min.js"></script>
+<script src="/script/jquery.cookie.js"></script>
+<script src="/script/Base.js"></script>
+<script src="/script/Message.js"></script>
+<script src="/script/MessageContent.js"></script>
+<script src="/script/MessageContent_EN_US.js"></script>
+<script src="/script/pageinit.js"></script>
+<script src="/script/SortTable.js"></script>
+<script src="/script/StringBuffer.js"></script>
+<script src="/script/ReSize.js"></script>
+<script src="/script/Form.js"></script>
+<script src="/script/FormEvent.js"></script>
+<script src="/script/PageScript.js"></script>
+<script src="/script/SuccessWindow.js"></script>
+<script src="/script/Calendar.js"></script><div id="__Calendar" style="width:250px;position:absolute;top:0px;left:0px;display:none;z-index:99"><span id="__SelectYearSpan" style="position:absolute;top:35px;left:65px;"></span><span id="__SelectMonthSpan" style="position:absolute;top:35px;left:125px;"></span><table width="100%" cellspacing="0" cellpadding="0" style="border: 1px solid #8080c0; background-color: #8080c0; border-radius: 2px; text-align: center;">	<tbody><tr>		<td style="padding: 5px; text-align: center;">			<table cellspacing="0" cellpadding="0" width="100%">				<tbody><tr>					<td style="width: 25% !important; cursor: pointer; color: #ffffff; background-color: rgba(255,255,255,0.2); border-radius: 2px; padding: 5px; text-align: center;" onclick="_c().prevMonth()" title="向前翻 1 月"><b>&lt;</b>					</td>					<td style="cursor: default; background-color: #ffffff; padding: 5px; text-align: center;" onmouseover="style.backgroundColor=&quot;#FFD700&quot;;" onmouseout="style.backgroundColor=&quot;white&quot;" onclick="_c().selectYear(_it(this)._s(0, 4))" title="點擊這裡選擇年份">						<span id="__YearHeader">2005 年</span>					</td>					<td style="cursor: default; background-color: #ffffff; padding: 5px; text-align: center;" onmouseover="style.backgroundColor='#FFD700';" onmouseout="style.backgroundColor='white'" onclick="_c().selectMonth(_it(_('__MonthHeader')).length==3?_it(this)._s(0, 1):_it(this)._s(0, 2))" title="點擊這裡選擇月份">						<span id="__MonthHeader">11 月</span>					</td>					<td style="width: 25% !important; cursor: pointer; color: #ffffff; background-color: rgba(255,255,255,0.2); border-radius: 2px; padding: 5px; text-align: center;" onclick="_c().nextMonth()" title="向後翻 1 月"><b>&gt;</b></td>				</tr>			</tbody></table>		</td>	</tr>	<tr>		<td style="padding: 0 5px;">			<table cellspacing="0" cellpadding="0" width="100%">				<tbody><tr style="color:#FFFFFF;font-size:14px;font-weight:bold;">					<td style="padding: 5px; text-align: center;"><font color="white">日</font></td>					<td style="padding: 5px; text-align: center;"><font color="white">一</font></td>					<td style="padding: 5px; text-align: center;"><font color="white">二</font></td>					<td style="padding: 5px; text-align: center;"><font color="white">三</font></td>					<td style="padding: 5px; text-align: center;"><font color="white">四</font></td>					<td style="padding: 5px; text-align: center;"><font color="white">五</font></td>					<td style="padding: 5px; text-align: center;"><font color="white">六</font></td>				</tr>			</tbody></table>		</td>	</tr>	<tr>		<td style="padding:5px 5px 0; text-align: center;">			<table cellspacing="1" cellpadding="0" width="100%"><tbody><tr style="font-weight:bold;"><td style="padding: 5px; text-align: center;" headers="W0" id="__Day0">11</td><td style="padding: 5px; text-align: center;" headers="W1" id="__Day1">11</td><td style="padding: 5px; text-align: center;" headers="W2" id="__Day2">11</td><td style="padding: 5px; text-align: center;" headers="W3" id="__Day3">11</td><td style="padding: 5px; text-align: center;" headers="W4" id="__Day4">11</td><td style="padding: 5px; text-align: center;" headers="W5" id="__Day5">11</td><td style="padding: 5px; text-align: center;" headers="W6" id="__Day6">11</td></tr><tr style="font-weight:bold;"><td style="padding: 5px; text-align: center;" headers="W0" id="__Day7">11</td><td style="padding: 5px; text-align: center;" headers="W1" id="__Day8">11</td><td style="padding: 5px; text-align: center;" headers="W2" id="__Day9">11</td><td style="padding: 5px; text-align: center;" headers="W3" id="__Day10">11</td><td style="padding: 5px; text-align: center;" headers="W4" id="__Day11">11</td><td style="padding: 5px; text-align: center;" headers="W5" id="__Day12">11</td><td style="padding: 5px; text-align: center;" headers="W6" id="__Day13">11</td></tr><tr style="font-weight:bold;"><td style="padding: 5px; text-align: center;" headers="W0" id="__Day14">11</td><td style="padding: 5px; text-align: center;" headers="W1" id="__Day15">11</td><td style="padding: 5px; text-align: center;" headers="W2" id="__Day16">11</td><td style="padding: 5px; text-align: center;" headers="W3" id="__Day17">11</td><td style="padding: 5px; text-align: center;" headers="W4" id="__Day18">11</td><td style="padding: 5px; text-align: center;" headers="W5" id="__Day19">11</td><td style="padding: 5px; text-align: center;" headers="W6" id="__Day20">11</td></tr><tr style="font-weight:bold;"><td style="padding: 5px; text-align: center;" headers="W0" id="__Day21">11</td><td style="padding: 5px; text-align: center;" headers="W1" id="__Day22">11</td><td style="padding: 5px; text-align: center;" headers="W2" id="__Day23">11</td><td style="padding: 5px; text-align: center;" headers="W3" id="__Day24">11</td><td style="padding: 5px; text-align: center;" headers="W4" id="__Day25">11</td><td style="padding: 5px; text-align: center;" headers="W5" id="__Day26">11</td><td style="padding: 5px; text-align: center;" headers="W6" id="__Day27">11</td></tr><tr style="font-weight:bold;"><td style="padding: 5px; text-align: center;" headers="W0" id="__Day28">11</td><td style="padding: 5px; text-align: center;" headers="W1" id="__Day29">11</td><td style="padding: 5px; text-align: center;" headers="W2" id="__Day30">11</td><td style="padding: 5px; text-align: center;" headers="W3" id="__Day31">11</td><td style="padding: 5px; text-align: center;" headers="W4" id="__Day32">11</td><td style="padding: 5px; text-align: center;" headers="W5" id="__Day33">11</td><td style="padding: 5px; text-align: center;" headers="W6" id="__Day34">11</td></tr><tr style="font-weight:bold;"><td style="padding: 5px; text-align: center;" headers="W0" id="__Day35">11</td><td style="padding: 5px; text-align: center;" headers="W1" id="__Day36">11</td><td style="padding: 5px; text-align: center;" headers="W2" id="__Day37">11</td><td style="padding: 5px; text-align: center;" headers="W3" id="__Day38">11</td>					<td style="padding: 5px; text-align: center;" colspan="3">						<span onclick="_c().closeCalendar();" style="cursor:pointer;font-weight:blod;color:#ffffff;"><u>關閉</u></span>&nbsp;					</td>				</tr>			</tbody></table>		</td>	</tr>	<tr>		<td style="padding: 5px; text-align: center;">             <div style="background: #fff;padding: 5px 0;">						<input type="button" value="&lt;&lt;" title="向前 1 年" onclick="_c().prevYear();" style="cursor:pointer;padding: 4px;margin: 0 4px 0 0;">						<input type="button" value="&lt; " title="向前 1 月" onclick="_c().prevMonth();" style="cursor:pointer;padding: 4px;margin: 0 4px;">						<input type="button" value="Today" title="當前日期" onclick="_c().today();" style="cursor:pointer;padding: 4px;margin: 0 4px;">						<input type="button" value=" &gt;" title="向後 1 月" onclick="_c().nextMonth();" style="cursor:pointer;padding: 4px;margin: 0 4px;">						<input type="button" value="&gt;&gt;" title="向後 1 年" onclick="_c().nextYear()" style="cursor:pointer;padding: 4px;margin: 0 0 0 4px;">             </div>		</td>	</tr></tbody></table></div>
+<script src="/script/DateUtil.js"></script>
+<script src="/script/StrUtil.js"></script>
+<script src="/script/Check.js"></script>
+<script src="/script/Decimal.js"></script>
+<script src="/script/WindowUtil.js"></script>
+<script src="/script/firebug/firebug.js"></script>
+<script src="/script/fancyBox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+<link href="/script/fancyBox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" media="screen" type="text/css">
+<script src="/script/jquery-ui-1.13.2.min.js"></script>
+<link href="/Css/jquery-ui-1.13.2.min.css" rel="stylesheet">
+<link href="/Css/RWDCss/remixicon/remixicon.css" rel="stylesheet">
+<link href="/Css/fontawesome/css/fontawesome.css" rel="stylesheet"><link href="/Css/fontawesome/css/brands.css" rel="stylesheet"><link href="/Css/fontawesome/css/solid.css" rel="stylesheet">
+
+<script>
+
+    var __d = document;
+
+    function getDocHeight() {
+        return Math.max(
+            Math.max(__d.body.scrollHeight, __d.documentElement.scrollHeight),
+            Math.max(__d.body.offsetHeight, __d.documentElement.offsetHeight),
+            Math.max(__d.body.clientHeight, __d.documentElement.clientHeight)
+        );
+    }
+
+    /**
+    @method Message.showProcess
+    顯示資料處理中
+    */
+
+    Message.showProcess = function () {
+        if ($(__d.body).length == 0)
+            return;
+        $("#__SCREEN").remove();
+        $(__d.body).append("<" + "img src='" + _vp + "images/space.jpg' alt='space' id='__SCREEN' style='display:none;position:absolute;'/" + ">");
+
+        /** 遮住使用者介面 */
+        $("#__SCREEN").css("width", screen.availWidth + "px");
+        $("#__SCREEN").css("height", getDocHeight() + "px");
+        $("#__SCREEN").css("filter", 'alpha(Opacity=50)');
+        $("#__SCREEN").css("opacity", '0.5');
+        $("#__SCREEN").css("top", "0px");
+        $("#__SCREEN").css("left", "0px");
+        $("#__SCREEN").show();
+
+        if ($("#__LOADINGBAR").length == 0)
+            $(__d.body).append("<" + "img src='" + _vp + "images/loading.gif' alt='Loading Icon' style='z-index:1000;position:absolute;display:none;' id='__LOADINGBAR'/" + ">");
+
+        /** 資料處理圖示 */
+        var scrollTop = __d.documentElement.scrollTop == 0 ? document.body.scrollTop : __d.documentElement.scrollTop;
+        var scrollLeft = __d.documentElement.scrollLeft == 0 ? document.body.scrollLeft : __d.documentElement.scrollLeft;
+
+        //$("#__LOADINGBAR").css("top", scrollTop + ($(window).height() - $("#__LOADINGBAR")[0].offsetHeight) / 2 + 'px');
+        //$("#__LOADINGBAR").css("left", scrollLeft + ($(window).width() - $("#__LOADINGBAR")[0].offsetWidth) / 2 + 'px');
+        $("#__LOADINGBAR").css("top", '50%');
+        $("#__LOADINGBAR").css("left", '50%');
+        $("#__LOADINGBAR").show();
+
+        document.body.style.overflow = 'hidden';
+
+        top.focus();
+    }
+
+    /**
+    @method Message.hideProcess
+    關閉資料處理中
+    */
+    Message.hideProcess = function () {
+        if ($(__d.body).length == 0)
+            return;
+
+        if ($("#__SCREEN").length > 0) {
+            $("#__SCREEN").hide();
+            $("#__SCREEN").css("width", "1px");
+        }
+        if ($("#__LOADINGBAR").length > 0)
+            $("#__LOADINGBAR").hide();
+
+        document.body.style.overflow = '';
+    }
+
+
+    $(document).ready
+	(
+		function (e) {
+		    //try{opener.document.forms[0].target	=	'';}catch(ex){}
+		}
+	);
+</script>
+<style type="text/css">
+    /*@font-face {
+        font-family: NtouCustomFont;
+        src: url('/Font/EUDCMING.woff') format('woff');
+    }*/
+</style><title>
+	國立台灣海洋大學教學務系統
+</title>
+    <script type="text/javascript">
+        /** 
+        網頁初始時處理 Client 的動作 
+        */
+        function page_init() {
+            page_init_start();
+        }
+
+        $(function () {
+            isContent();
+            doAddordion();
+            //goPage(1, 10);
+            changePage();
+        });
+
+        function doAddordion() {
+            $(".addordion").each(function () {
+                $(this).click(function () {
+                    $(this).toggleClass("addordion-active");
+                    $(this).next(".addordion-content").slideToggle(300);
+                });
+            });
+        }
+        function EndRequestHandler() {
+            isContent();
+            doAddordion();
+            //goPage(1, 10);
+            changePage();
+        }
+
+        function isContent() {
+            var addordion = document.querySelectorAll(".addordion");
+            var addordionIcon = document.querySelectorAll(".addordion-icon");
+            var addordionContent = document.querySelectorAll(".addordion-content");
+            var contentNum = addordionContent.length;
+            for (var j = 0; j < contentNum; j++) {
+                if (addordionContent[j].innerHTML == '<span class="msg-content"> </span>') {
+                    addordion[j].style.cursor = "default";
+                    addordionIcon[j].style.display = "none";
+                }
+            }
+        }
+
+        function changePage(){
+            var favoriteLink = document.querySelectorAll(".f-link");
+            var favoriteLinkLen = favoriteLink.length;
+            for(var i = 0; i < favoriteLinkLen; i++){
+                favoriteLink[i].addEventListener("click", showShadow);
+            }
+            function showShadow(){
+                var shadowAnimation = document.getElementById("shadow");
+                shadowAnimation.style.display = "block";
+            }
+        }
+
+        function deleteMsg(pkno) {
+            var DeletePkno = document.getElementById("DeletePkno");
+            DeletePkno.value = pkno;
+            if (confirm("是否要刪除此筆訊息？")) {
+                Message.showProcess();
+                __doPostBack("DeleteMsgBtn", "");
+            }
+            else
+                Message.hideProcess();
+        }
+
+        /**
+        查詢功能時呼叫 for ShowMsg顯示訊息
+        */
+        function doQuery() {
+            /** 顯示資料處理 */
+            Message.showProcess();
+
+            //=== 自定檢查 ===
+            //=== 資料檢核及設定, 當有錯誤處理方式為 Form.errAppend(Message) 累計錯誤訊息 ===
+            //if (Form.getInput("EDIT", "SYS_CD") == "")
+            //	Form.errAppend("系統編號不可空白!!");
+            /** ================ */
+
+            //=== 檢查是否有錯誤訊息 ===
+            var needSend = valideMessage("Q_");
+
+            //=== 發生錯誤不處理 ===
+            if (!needSend) {
+                Message.hideProcess();
+                return false;
+            }
+
+            top.rowKey = null;
+
+            return true;
+        }
+    </script>
+
+    
+
+    
+    <link href="Css/rwdStyle.css" rel="stylesheet">
+    <style>
+        .msg-list, div.msg-single {
+            margin: 0;
+            color: #444444;
+            font-size: 1rem;
+            word-break: break-word;
+            text-align: justify;
+        }
+
+        .msg-list {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            padding-left: 10px;
+            padding-right: 10px;
+            border-bottom: 1px dashed #e3e6f0;
+            transition: .3s all ease;
+        }
+
+            .msg-list:hover {
+                background: rgba(13,110,253,.05);
+            }
+
+            .msg-list .addordion .date-admin {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+            }
+
+                .msg-list .addordion .date-admin > div {
+                    display: flex;
+                    align-items: center;
+                    font-size: 0.8rem;
+                    margin-right: 5px;
+                    color: #4e73df !important;
+                }
+
+            .msg-list .msg-subj {
+                color: #012970 !important;
+                width: calc(100% - 40px);
+            }
+
+            .msg-list .msg-content {
+                display: block;
+                text-indent: 0;
+            }
+
+        .msg-delete {
+            color: #c6c7c8;
+            cursor: pointer;
+        }
+
+            .msg-delete:hover {
+                color: #6c757d;
+            }
+
+        .addordion {
+            position: relative;
+            cursor: pointer;
+        }
+
+            .addordion span {
+                color: #012970 !important;
+            }
+
+        .addordion-icon {
+            position: absolute;
+            top: 50%;
+            right: 14px;
+        }
+
+            .addordion-icon span {
+                display: block;
+                width: 12px;
+                height: 2px;
+                background-color: #012970;
+                transition: transform .2s ease;
+            }
+
+                .addordion-icon span:last-of-type {
+                    transform: rotate(90deg) translateX(-2px);
+                }
+
+        .msg-list:has(.addordion-active) {
+            background: rgba(13,110,253,.05);
+        }
+
+        .msg-list .addordion-active .msg-subj {
+            color: #4e73df !important;
+            font-weight: bold;
+        }
+
+        .addordion-active .addordion-icon span {
+            background-color: #4e73df;
+        }
+
+            .addordion-active .addordion-icon span:first-of-type {
+                transform: rotate(180deg);
+            }
+
+            .addordion-active .addordion-icon span:last-of-type {
+                transform: rotate(0) translateY(-2px);
+            }
+
+        div.paginationArea {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            padding-top: 0.75rem;
+            font-weight: 400;
+        }
+
+        a.pageNum, a.prev, a.next {
+            color: #4e73df !important;
+            text-align: center;
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 4px;
+            border: 1px solid #e6e6e6;
+            margin-bottom: 5px;
+            margin-left: 2px;
+            margin-right: 2px;
+            transition: .3s all ease;
+        }
+
+        a.prev {
+            margin-left: 0px;
+        }
+
+        a.next {
+            margin-right: 0px;
+        }
+
+            a.pageNum.pActive, a.pageNum:hover, a.prev:hover, a.next:hover {
+                background: #4e73df;
+                color: #fff !important;
+                border: 1px solid transparent;
+            }
+
+
+        /*遮罩*/
+        #shadow {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            opacity: 1;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            top: 0;
+            background: white;
+            z-index: 100;
+            display: none;
+        }
+        /*loading圖示*/
+        .loader-container {
+            margin: 0 auto;
+            width: 100px;
+            height: 100px;
+            position: relative;
+            top: calc(50% - 50px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loader {
+            position: absolute;
+            border-radius: 50%;
+            border-bottom: 10px solid #4e73df;
+            animation: load 2s linear infinite;
+        }
+
+            .loader:nth-child(1) {
+                width: 100px;
+                height: 100px;
+            }
+
+            .loader:nth-child(2) {
+                width: 70px;
+                height: 70px;
+                animation-direction: reverse;
+            }
+
+        @keyframes load {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+
+
+    <form name="form1" method="post" action="./portal.aspx" id="form1">
+<div>
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=tBmHPwqt5FZ_fz9Akc9MrJaFgPQJw412uICKlLfoMPw5ZrxpqET-qokPkZQzXaX0TRBPEoHZ1qqa_0aDlJfku8zi6zw1&amp;t=638286353964787378" type="text/javascript"></script>
+
+
+<script src="/ScriptResource.axd?d=1iwX_N96F-GE2OSWzmJueu4xawlIvxaYJkz5_lyAK0DgAJ2tOakpmh_iZS1wUHtwGuM7QVIcuI_6zcxr0AaJUp12YDW9AKW-7CM7wzh8TJM4yO0IFwzei0Tzr5Jbc7kQ4KeM_82VLjgLR77gQ631TYjIAC2y59hBxAIwS2iUC-swE4AN0&amp;t=13798092" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=DqBaCMv3HvhEO-U4ESLWYrZY2mo5nHKEJCDb9act8CeFzbCFI-fn1K4WuIYtI9_0UdMgER1Mo_hMrd_To1Kn0rt86dZIhkyUS4g-5tPddT8ffK6pFZEDiZWRklKEMLZw543VA9IzOuleFA0RBs-12WCHZeBoE4zTfHKfx74RVzy3jLlJa9MpsZjkhzhhdixsDILUiQ2&amp;t=13798092" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+var PageMethods = function() {
+PageMethods.initializeBase(this);
+this._timeout = 0;
+this._userContext = null;
+this._succeeded = null;
+this._failed = null;
+}
+PageMethods.prototype = {
+_get_path:function() {
+ var p = this.get_path();
+ if (p) return p;
+ else return PageMethods._staticInstance.get_path();},
+AjaxError:function(succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'AjaxError',false,{},succeededCallback,failedCallback,userContext); }}
+PageMethods.registerClass('PageMethods',Sys.Net.WebServiceProxy);
+PageMethods._staticInstance = new PageMethods();
+PageMethods.set_path = function(value) { PageMethods._staticInstance.set_path(value); }
+PageMethods.get_path = function() { return PageMethods._staticInstance.get_path(); }
+PageMethods.set_timeout = function(value) { PageMethods._staticInstance.set_timeout(value); }
+PageMethods.get_timeout = function() { return PageMethods._staticInstance.get_timeout(); }
+PageMethods.set_defaultUserContext = function(value) { PageMethods._staticInstance.set_defaultUserContext(value); }
+PageMethods.get_defaultUserContext = function() { return PageMethods._staticInstance.get_defaultUserContext(); }
+PageMethods.set_defaultSucceededCallback = function(value) { PageMethods._staticInstance.set_defaultSucceededCallback(value); }
+PageMethods.get_defaultSucceededCallback = function() { return PageMethods._staticInstance.get_defaultSucceededCallback(); }
+PageMethods.set_defaultFailedCallback = function(value) { PageMethods._staticInstance.set_defaultFailedCallback(value); }
+PageMethods.get_defaultFailedCallback = function() { return PageMethods._staticInstance.get_defaultFailedCallback(); }
+PageMethods.set_enableJsonp = function(value) { PageMethods._staticInstance.set_enableJsonp(value); }
+PageMethods.get_enableJsonp = function() { return PageMethods._staticInstance.get_enableJsonp(); }
+PageMethods.set_jsonpCallbackParameter = function(value) { PageMethods._staticInstance.set_jsonpCallbackParameter(value); }
+PageMethods.get_jsonpCallbackParameter = function() { return PageMethods._staticInstance.get_jsonpCallbackParameter(); }
+PageMethods.set_path("portal.aspx");
+PageMethods.AjaxError= function(onSuccess,onFailed,userContext) {PageMethods._staticInstance.AjaxError(onSuccess,onFailed,userContext); }
+//]]>
+</script>
+
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="AEE5B949">
+	<input type="hidden" name="__VIEWSTATEENCRYPTED" id="__VIEWSTATEENCRYPTED" value="">
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="bolEfnTGEGcVeUYcwQ+/2JUSApwXd9FFXqa5k2MumcBnV5v3NkAPwItD7J6qr4vZ+zOu5Y41Dxr7IF4OrZNsThycYM3Cw7LP/4FWahN8uJpzO08gJIvtbl8qnK5lJsGWswIYcOm0W5K0eYvWy2W0epMdKHdqXt3MWExT/1jf9l9P4NKlR24KA/L0gGD6qeI5Lwqbzu1pXh1ZI+ncxTX3PfdiXr64nUyrOhG0JksIuZ/t6fWd87r/tFb7ugUwBaHCmCK0lSS5ucFofkkKA3pWOk/Td9DP4F5KHXMAoxOTbTgEZHWr3ci9E6xXMuG2fkzY91GBi219OTaLbQMkN4L3xMh1jBd1hnP7eWI+RnGp/V7BX/4z">
+</div>
+        <div>
+            <!-- 自訂跳頁前遮罩loading畫面start -->
+            <div id="shadow">
+                <div class="loader-container">
+                    <div class="loader"></div>
+                    <div class="loader"></div>
+                </div>
+            </div>
+            <!-- 自訂跳頁前遮罩loading畫面end -->
+            <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ScriptManager1', 'form1', ['tAjaxPanel',''], [], [], 90, '');
+//]]>
+</script>
+
+            <script type="text/javascript">Sys.WebForms.PageRequestManager.getInstance().add_endRequest(EndRequestHandler);</script>
+            <div id="AjaxPanel">
+	
+                    <input type="hidden" name="ActivePageControl" id="ActivePageControl">
+                    <input type="hidden" name="DeletePkno" id="DeletePkno">
+                    <div class="row no-gutters">
+                        <div class="col title_2">
+                            <i class="ri-function-fill"></i>
+                            <span ml="CL_常用功能">常用功能</span>
+                        </div>
+                        
+                    </div>
+                    <div class="hr hr-bottom hr-dashed"></div>
+                    <div class="row align-items-stretch">
+                        <div class="col-12 prog-icon justify-content-center"><a href="./Application/FAV/FAV1010_.aspx"><i class="ri-heart-add-fill"></i> 點我編輯</a></div>
+
+                    </div>
+                    <div class="title_2">
+                        <i class="ri-function-fill"></i>
+                        <span ml="訊息公告">訊息公告</span>
+                    </div>
+                    <div class="hr hr-bottom hr-dashed"></div>
+                    <div class="row align-items-stretch">
+                        <div class="col-12 d-flex mb-4">
+                            <div class="shadow-frame">
+                                <div class="card-header">
+                                    <span ml="CL_教學務系統改版訊息">教學務系統改版訊息</span>
+                                </div>
+                                <div class="card-body">
+                                    <div class="msg-box">
+                                        
+                                        <span style="text-align: justify;">
+                                            <span class="d-block mb-2">為提供教學務系統使用者於手機、平板、電腦等不同解析度裝置更易讀、易用之操作介面，學校著手進行系統RWD響應式網頁建置(手機、平板易操作介面)。因教學務系統囊括眾多子系統，目前將先提供登入頁、首頁、選單RWD架構，並增加「常用功能」區塊等方便流暢操作功能，後續各子系統將逐步進行RWD介面的建置；現完成建置之系統功能包括體育室辦證系統、獎懲-操性管理、學生團體保險、校外租賃訊息管理、新生體檢收件註記、學生住宿系統、組織、自我健康管理紀錄等功能，使用者有任何問題和意見可email至<a href="mailto:staff@mail.ntou.edu.tw">staff@mail.ntou.edu.tw</a>告知。
+                                            </span>
+                                            <span class="d-block">新版RWD畫面採藍、白、灰為主色搭配呈現，使用者可藉此清楚分辨使用的功能是否具有RWD功能。
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 d-flex mb-4">
+                            <div class="shadow-frame">
+                                <div class="card-header has-btns">
+                                    <span ml="CL_資訊安全宣導">資訊安全宣導</span>
+                                    <div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="msg-box">
+                                        <span class="d-block mb-2"><i class="ri-alarm-warning-fill"></i><span style="margin-left: 5px;">依資通法要求實施密碼效期機制，密碼最長效期為182天，請定期修改您的密碼。<a href="./Application/PWD/PWD1020_.aspx">(修改密碼)</a></span></span>
+<span class="d-block mb-2"><i class="ri-alarm-warning-fill"></i><span style="margin-left: 5px;"><a href="https://academic.ntou.edu.tw/p/412-1005-11775.php?Lang=zh-tw" target="_blank">《個人資料蒐集告知聲明》</a></span></span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 d-flex mb-4">
+                            <div class="shadow-frame">
+                                <div class="card-header has-btns">
+                                    <span id="selfMsgTitle" ml="CL_個人訊息">個人訊息</span>
+                                    
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <!-- 分頁字串起始 -->
+                                        <div class="col-md-12 page-no-section">
+                                            
+<style>
+    /*拿掉input type=number的輸入框小箭頭*/
+    input[type=number]::-webkit-ouer-spin-button,
+    input[type=number]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type=number] {
+        -moz-appearance: textfield;
+        width: 40px;
+    }
+</style>
+<div id="PC_ACER_PAGE_DIV" class="PageDiv">
+    <span id="PC_PageStr"> <span onclick="gotoPage('PC_PageNo', 1, 'doQuery', 'ReQuery')"><a href="#this" class="page-active" style="color:#FF5555;">1</a></span>  <span onclick="gotoPage('PC_PageNo', 2, 'doQuery', 'ReQuery')"><a href="#this">2</a></span>  <span onclick="gotoPage('PC_PageNo', 3, 'doQuery', 'ReQuery')"><a href="#this">3</a></span>  <span onclick="gotoPage('PC_PageNo', 4, 'doQuery', 'ReQuery')"><a href="#this">4</a></span>  <span onclick="gotoPage('PC_PageNo', 5, 'doQuery', 'ReQuery')"><a href="#this">5</a></span>  <span onclick="gotoPage('PC_PageNo', 6, 'doQuery', 'ReQuery')"><a href="#this">6</a></span>  <span onclick="gotoPage('PC_PageNo', 7, 'doQuery', 'ReQuery')"><a href="#this">7</a></span>  <span onclick="gotoPage('PC_PageNo', 8, 'doQuery', 'ReQuery')"><a href="#this">8</a></span>  <span onclick="gotoPage('PC_PageNo', 9, 'doQuery', 'ReQuery')"><a href="#this">9</a></span>  <span onclick="gotoPage('PC_PageNo', 10, 'doQuery', 'ReQuery')"><a href="#this">10</a></span>  <span onclick="gotoPage('PC_PageNo', 2, 'doQuery', 'ReQuery')"><a href="#this">&gt;</a></span>  <span onclick="gotoPage('PC_PageNo', 11, 'doQuery', 'ReQuery')"><a href="#this">&gt;&gt;</a></span> </span>
+    <span id="page-num">【<span ml="CL_每頁">每頁</span>
+        <input name="PC$PageSize" value="10" id="PC_PageSize" type="number" size="1" iniformset="'N1';'NR'" onkeypress="_fe().onlyAllowNumPress1(event)" numberrange="1-100000" onblur="_fe().numberRngeCheck(event);if(_i(0, 'PC_PageSize').value == ''){Message.showMessage('129');_i(0, 'PC_PageSize').value = '10';_i(0, 'PC_PageSize').focus();};" onkeydown="if (event.keyCode==13) _i(0, 'PC_ShowRows').click();" style="ime-mode:disabled;">
+        <input name="PC$ShowRows" type="button" id="PC_ShowRows" ml="CB_筆" value="筆" class="btn" onclick="gotoPage('PC_PageNo', null, 'doQuery', 'ReQuery', '');">
+        
+        <span>，</span>
+        <span ml="CL_第">第</span>
+        <input name="PC$PageNo" value="1" id="PC_PageNo" type="number" size="1" iniformset="'N1';'NR'" onkeypress="_fe().onlyAllowNumPress1(event)" numberrange="1-100000" onblur="_fe().numberRngeCheck(event);if(_i(0, 'PC_PageNo').value == ''){Message.showMessage('130');_i(0, 'PC_PageNo').value = '1';_i(0, 'PC_PageNo').focus();}" onkeydown="if (event.keyCode==13) _i(0, 'PC_ToGo').click();" style="ime-mode:disabled;">
+        <input name="PC$ToGo" type="button" id="PC_ToGo" ml="CB_頁" value="頁" class="btn" onclick="gotoPage('PC_PageNo', null, 'doQuery', 'ReQuery', '');">
+        
+        <span>，</span>
+        <span ml="CL_共">共</span>
+        <span id="PC_TotalPage">16</span>
+        <span ml="CL_頁">頁</span>
+        <span id="PC_TotalRow">156</span>
+        <span ml="CL_筆">筆</span>】		
+    </span>
+</div>
+
+                                        </div>
+                                        <!-- 分頁字串結束 -->
+                                    </div>
+                                    <div class="row msg-box">
+                                        <div class="msg-list">
+<div class="addordion d-flex justify-content-between align-items-center">
+<div style="position: relative; width: 100%;">
+<div class="msg-subj"><div class="date-admin"><div><i class="ri-calendar-event-fill"></i>2025/12/11 下午 04:00:31</div><div><i class="ri-user-fill"></i>副校長室-詹鴻敏</div></div>問卷【國立臺灣海洋大學114學年度行政滿意度問卷調查表(同學)】未填答人員通知</div>
+<div class="addordion-icon"><span></span><span></span></div>
+</div>
+<div class="msg-delete" onclick="deleteMsg(&quot;39302824&quot;)"><i class="ri-delete-bin-line"></i></div>
+</div>
+<div class="addordion-content" style="display: none;"><span class="msg-content">楊浤立 君您好，<br><br>
+　　海洋大學　副校長室-　於 114/11/24 上午 00:00:00 至 114/12/13 上午 00:00:00 進行【國立臺灣海洋大學114學年度行政滿意度問卷調查表(同學)】問卷調查。請於此期限內盡速於【教學務系統】的【問卷調查系統】子系統中填寫，謝謝！<br><br>
+
+填寫問卷操作流程<br><br>
+
+　　1.使用瀏覽器（Edge, Chrome or Firefox）連結【教學務系統】<br>
+　　2.登入（需要帳號與密碼）<br>
+　　　Login（Account and Password）<br>
+　　3.點選【問卷調查系統】（位於畫面左邊）展開功能選項<br>
+　　　Click【Questionnaire System】(Located on the left screen)<br>
+　　4.點選〔填寫問卷〕功能  <br>
+　　　Click〔Fill in the questionnaire〕Function<br>
+　　5.點選〔查詢〕按鍵（位於畫面右上方）<br>
+　　　Click〔Query〕Button (Located on the top right screen)<br>
+　　6.點選查詢結果列表中問卷標題：【國立臺灣海洋大學114學年度行政滿意度問卷調查表(同學)】（必須於日期 114/11/24 上午 00:00:00 至 114/12/13 上午 00:00:00 之間才能點選） <br>
+　　7.依照畫面填寫問卷題目（有＊為必填題目）<br>
+　　8.問卷題目填寫完成後，點選〔送出〕功能（位於畫面右上角）<br><br>
+
+*** 本信件由系統自動發信，請勿直接回覆 。***</span></div>
+</div>
+<div class="msg-list">
+<div class="addordion d-flex justify-content-between align-items-center">
+<div style="position: relative; width: 100%;">
+<div class="msg-subj"><div class="date-admin"><div><i class="ri-calendar-event-fill"></i>2025/12/10 上午 09:00:11</div><div><i class="ri-user-fill"></i>副校長室-詹鴻敏</div></div>問卷【國立臺灣海洋大學114學年度行政滿意度問卷調查表(同學)】未填答人員通知</div>
+<div class="addordion-icon"><span></span><span></span></div>
+</div>
+<div class="msg-delete" onclick="deleteMsg(&quot;39205385&quot;)"><i class="ri-delete-bin-line"></i></div>
+</div>
+<div class="addordion-content" style="display: none;"><span class="msg-content">楊浤立 君您好，<br><br>
+　　海洋大學　副校長室-　於 114/11/24 上午 00:00:00 至 114/12/13 上午 00:00:00 進行【國立臺灣海洋大學114學年度行政滿意度問卷調查表(同學)】問卷調查。請於此期限內盡速於【教學務系統】的【問卷調查系統】子系統中填寫，謝謝！<br><br>
+
+填寫問卷操作流程<br><br>
+
+　　1.使用瀏覽器（Edge, Chrome or Firefox）連結【教學務系統】<br>
+　　2.登入（需要帳號與密碼）<br>
+　　　Login（Account and Password）<br>
+　　3.點選【問卷調查系統】（位於畫面左邊）展開功能選項<br>
+　　　Click【Questionnaire System】(Located on the left screen)<br>
+　　4.點選〔填寫問卷〕功能  <br>
+　　　Click〔Fill in the questionnaire〕Function<br>
+　　5.點選〔查詢〕按鍵（位於畫面右上方）<br>
+　　　Click〔Query〕Button (Located on the top right screen)<br>
+　　6.點選查詢結果列表中問卷標題：【國立臺灣海洋大學114學年度行政滿意度問卷調查表(同學)】（必須於日期 114/11/24 上午 00:00:00 至 114/12/13 上午 00:00:00 之間才能點選） <br>
+　　7.依照畫面填寫問卷題目（有＊為必填題目）<br>
+　　8.問卷題目填寫完成後，點選〔送出〕功能（位於畫面右上角）<br><br>
+
+*** 本信件由系統自動發信，請勿直接回覆 。***</span></div>
+</div>
+<div class="msg-list">
+<div class="addordion d-flex justify-content-between align-items-center">
+<div style="position: relative; width: 100%;">
+<div class="msg-subj"><div class="date-admin"><div><i class="ri-calendar-event-fill"></i>2025/12/8 上午 10:00:12</div><div><i class="ri-user-fill"></i>副校長室-詹鴻敏</div></div>問卷【國立臺灣海洋大學114學年度行政滿意度問卷調查表(同學)】未填答人員通知</div>
+<div class="addordion-icon"><span></span><span></span></div>
+</div>
+<div class="msg-delete" onclick="deleteMsg(&quot;39165722&quot;)"><i class="ri-delete-bin-line"></i></div>
+</div>
+<div class="addordion-content" style="display: none;"><span class="msg-content">楊浤立 君您好，<br><br>
+　　海洋大學　副校長室-　於 114/11/24 上午 00:00:00 至 114/12/13 上午 00:00:00 進行【國立臺灣海洋大學114學年度行政滿意度問卷調查表(同學)】問卷調查。請於此期限內盡速於【教學務系統】的【問卷調查系統】子系統中填寫，謝謝！<br><br>
+
+填寫問卷操作流程<br><br>
+
+　　1.使用瀏覽器（Edge, Chrome or Firefox）連結【教學務系統】<br>
+　　2.登入（需要帳號與密碼）<br>
+　　　Login（Account and Password）<br>
+　　3.點選【問卷調查系統】（位於畫面左邊）展開功能選項<br>
+　　　Click【Questionnaire System】(Located on the left screen)<br>
+　　4.點選〔填寫問卷〕功能  <br>
+　　　Click〔Fill in the questionnaire〕Function<br>
+　　5.點選〔查詢〕按鍵（位於畫面右上方）<br>
+　　　Click〔Query〕Button (Located on the top right screen)<br>
+　　6.點選查詢結果列表中問卷標題：【國立臺灣海洋大學114學年度行政滿意度問卷調查表(同學)】（必須於日期 114/11/24 上午 00:00:00 至 114/12/13 上午 00:00:00 之間才能點選） <br>
+　　7.依照畫面填寫問卷題目（有＊為必填題目）<br>
+　　8.問卷題目填寫完成後，點選〔送出〕功能（位於畫面右上角）<br><br>
+
+*** 本信件由系統自動發信，請勿直接回覆 。***</span></div>
+</div>
+<div class="msg-list">
+<div class="addordion d-flex justify-content-between align-items-center">
+<div style="position: relative; width: 100%;">
+<div class="msg-subj"><div class="date-admin"><div><i class="ri-calendar-event-fill"></i>2025/12/4 上午 10:00:36</div><div><i class="ri-user-fill"></i>副校長室-詹鴻敏</div></div>問卷【國立臺灣海洋大學114學年度行政滿意度問卷調查表(同學)】未填答人員通知</div>
+<div class="addordion-icon"><span></span><span></span></div>
+</div>
+<div class="msg-delete" onclick="deleteMsg(&quot;39083288&quot;)"><i class="ri-delete-bin-line"></i></div>
+</div>
+<div class="addordion-content" style="display: none;"><span class="msg-content">楊浤立 君您好，<br><br>
+　　海洋大學　副校長室-　於 114/11/24 上午 00:00:00 至 114/12/13 上午 00:00:00 進行【國立臺灣海洋大學114學年度行政滿意度問卷調查表(同學)】問卷調查。請於此期限內盡速於【教學務系統】的【問卷調查系統】子系統中填寫，謝謝！<br><br>
+
+填寫問卷操作流程<br><br>
+
+　　1.使用瀏覽器（Edge, Chrome or Firefox）連結【教學務系統】<br>
+　　2.登入（需要帳號與密碼）<br>
+　　　Login（Account and Password）<br>
+　　3.點選【問卷調查系統】（位於畫面左邊）展開功能選項<br>
+　　　Click【Questionnaire System】(Located on the left screen)<br>
+　　4.點選〔填寫問卷〕功能  <br>
+　　　Click〔Fill in the questionnaire〕Function<br>
+　　5.點選〔查詢〕按鍵（位於畫面右上方）<br>
+　　　Click〔Query〕Button (Located on the top right screen)<br>
+　　6.點選查詢結果列表中問卷標題：【國立臺灣海洋大學114學年度行政滿意度問卷調查表(同學)】（必須於日期 114/11/24 上午 00:00:00 至 114/12/13 上午 00:00:00 之間才能點選） <br>
+　　7.依照畫面填寫問卷題目（有＊為必填題目）<br>
+　　8.問卷題目填寫完成後，點選〔送出〕功能（位於畫面右上角）<br><br>
+
+*** 本信件由系統自動發信，請勿直接回覆 。***</span></div>
+</div>
+<div class="msg-list">
+<div class="addordion d-flex justify-content-between align-items-center">
+<div style="position: relative; width: 100%;">
+<div class="msg-subj"><div class="date-admin"><div><i class="ri-calendar-event-fill"></i>2025/12/2 上午 10:00:13</div><div><i class="ri-user-fill"></i>副校長室-詹鴻敏</div></div>問卷【國立臺灣海洋大學114學年度行政滿意度問卷調查表(同學)】未填答人員通知</div>
+<div class="addordion-icon"><span></span><span></span></div>
+</div>
+<div class="msg-delete" onclick="deleteMsg(&quot;39038909&quot;)"><i class="ri-delete-bin-line"></i></div>
+</div>
+<div class="addordion-content" style="display: none;"><span class="msg-content">楊浤立 君您好，<br><br>
+　　海洋大學　副校長室-　於 114/11/24 上午 00:00:00 至 114/12/13 上午 00:00:00 進行【國立臺灣海洋大學114學年度行政滿意度問卷調查表(同學)】問卷調查。請於此期限內盡速於【教學務系統】的【問卷調查系統】子系統中填寫，謝謝！<br><br>
+
+填寫問卷操作流程<br><br>
+
+　　1.使用瀏覽器（Edge, Chrome or Firefox）連結【教學務系統】<br>
+　　2.登入（需要帳號與密碼）<br>
+　　　Login（Account and Password）<br>
+　　3.點選【問卷調查系統】（位於畫面左邊）展開功能選項<br>
+　　　Click【Questionnaire System】(Located on the left screen)<br>
+　　4.點選〔填寫問卷〕功能  <br>
+　　　Click〔Fill in the questionnaire〕Function<br>
+　　5.點選〔查詢〕按鍵（位於畫面右上方）<br>
+　　　Click〔Query〕Button (Located on the top right screen)<br>
+　　6.點選查詢結果列表中問卷標題：【國立臺灣海洋大學114學年度行政滿意度問卷調查表(同學)】（必須於日期 114/11/24 上午 00:00:00 至 114/12/13 上午 00:00:00 之間才能點選） <br>
+　　7.依照畫面填寫問卷題目（有＊為必填題目）<br>
+　　8.問卷題目填寫完成後，點選〔送出〕功能（位於畫面右上角）<br><br>
+
+*** 本信件由系統自動發信，請勿直接回覆 。***</span></div>
+</div>
+<div class="msg-list">
+<div class="addordion d-flex justify-content-between align-items-center">
+<div style="position: relative; width: 100%;">
+<div class="msg-subj"><div class="date-admin"><div><i class="ri-calendar-event-fill"></i>2025/11/27 上午 10:04:19</div><div><i class="ri-user-fill"></i>教務處學術服務組蔡憶如</div></div>【課程教學評鑑】國立臺灣海洋大學教學評鑑問卷_需填答人員通知</div>
+<div class="addordion-icon"><span></span><span></span></div>
+</div>
+<div class="msg-delete" onclick="deleteMsg(&quot;38966654&quot;)"><i class="ri-delete-bin-line"></i></div>
+</div>
+<div class="addordion-content" style="display: none;"><span class="msg-content">資訊工程學系 楊浤立 同學 ( 01157025 ) 您好，<br>
+
+海洋大學114學年度第1學期課程評鑑 於 114/11/24 至 114/12/12 實施，<br>
+
+提醒您，請於 <font color="red">114/12/12</font> 前至【教學務系統 → 教務系統 → 教學評鑑 → 填寫課程問卷】（網址：<font color="red"> https://ais.ntou.edu.tw/ </font>）填寫修課課程問卷，謝謝！<br><br>
+
+
+國立臺灣海洋大學　教務處學術服務組<br>
+ 
+聯絡電話：(02)2462 - 2192  分機：2115<br><br>
+
+
+*** 本信件由系統自動發信，請勿回覆 ***</span></div>
+</div>
+<div class="msg-list">
+<div class="addordion d-flex justify-content-between align-items-center">
+<div style="position: relative; width: 100%;">
+<div class="msg-subj"><div class="date-admin"><div><i class="ri-calendar-event-fill"></i>2025/11/27 上午 10:01:54</div><div><i class="ri-user-fill"></i>教務處學術服務組蔡憶如</div></div>【課程教學評鑑】國立臺灣海洋大學教學評鑑問卷_需填答人員通知</div>
+<div class="addordion-icon"><span></span><span></span></div>
+</div>
+<div class="msg-delete" onclick="deleteMsg(&quot;38961585&quot;)"><i class="ri-delete-bin-line"></i></div>
+</div>
+<div class="addordion-content" style="display: none;"><span class="msg-content">資訊工程學系 楊浤立 同學 ( 01157025 ) 您好，<br>
+
+海洋大學114學年度第1學期課程評鑑 於 114/11/24 至 114/12/12 實施，<br>
+
+提醒您，請於 <font color="red">114/12/12</font> 前至【教學務系統 → 教務系統 → 教學評鑑 → 填寫課程問卷】（網址：<font color="red"> https://ais.ntou.edu.tw/ </font>）填寫修課課程問卷，謝謝！<br><br>
+
+
+國立臺灣海洋大學　教務處學術服務組<br>
+ 
+聯絡電話：(02)2462 - 2192  分機：2115<br><br>
+
+
+*** 本信件由系統自動發信，請勿回覆 ***</span></div>
+</div>
+<div class="msg-list">
+<div class="addordion d-flex justify-content-between align-items-center">
+<div style="position: relative; width: 100%;">
+<div class="msg-subj"><div class="date-admin"><div><i class="ri-calendar-event-fill"></i>2025/11/27 上午 09:00:49</div><div><i class="ri-user-fill"></i>副校長室-詹鴻敏</div></div>問卷【國立臺灣海洋大學114學年度行政滿意度問卷調查表(同學)】未填答人員通知</div>
+<div class="addordion-icon"><span></span><span></span></div>
+</div>
+<div class="msg-delete" onclick="deleteMsg(&quot;38915653&quot;)"><i class="ri-delete-bin-line"></i></div>
+</div>
+<div class="addordion-content" style="display: none;"><span class="msg-content">楊浤立 君您好，<br><br>
+　　海洋大學　副校長室-　於 114/11/24 上午 00:00:00 至 114/12/13 上午 00:00:00 進行【國立臺灣海洋大學114學年度行政滿意度問卷調查表(同學)】問卷調查。請於此期限內盡速於【教學務系統】的【問卷調查系統】子系統中填寫，謝謝！<br><br>
+
+填寫問卷操作流程<br><br>
+
+　　1.使用瀏覽器（Edge, Chrome or Firefox）連結【教學務系統】<br>
+　　2.登入（需要帳號與密碼）<br>
+　　　Login（Account and Password）<br>
+　　3.點選【問卷調查系統】（位於畫面左邊）展開功能選項<br>
+　　　Click【Questionnaire System】(Located on the left screen)<br>
+　　4.點選〔填寫問卷〕功能  <br>
+　　　Click〔Fill in the questionnaire〕Function<br>
+　　5.點選〔查詢〕按鍵（位於畫面右上方）<br>
+　　　Click〔Query〕Button (Located on the top right screen)<br>
+　　6.點選查詢結果列表中問卷標題：【國立臺灣海洋大學114學年度行政滿意度問卷調查表(同學)】（必須於日期 114/11/24 上午 00:00:00 至 114/12/13 上午 00:00:00 之間才能點選） <br>
+　　7.依照畫面填寫問卷題目（有＊為必填題目）<br>
+　　8.問卷題目填寫完成後，點選〔送出〕功能（位於畫面右上角）<br><br>
+
+*** 本信件由系統自動發信，請勿直接回覆 。***</span></div>
+</div>
+<div class="msg-list">
+<div class="addordion d-flex justify-content-between align-items-center">
+<div style="position: relative; width: 100%;">
+<div class="msg-subj"><div class="date-admin"><div><i class="ri-calendar-event-fill"></i>2025/11/24 上午 09:01:26</div><div><i class="ri-user-fill"></i>副校長室-詹鴻敏</div></div>問卷【國立臺灣海洋大學114學年度行政滿意度問卷調查表(同學)】須填答人員通知</div>
+<div class="addordion-icon"><span></span><span></span></div>
+</div>
+<div class="msg-delete" onclick="deleteMsg(&quot;38840766&quot;)"><i class="ri-delete-bin-line"></i></div>
+</div>
+<div class="addordion-content" style="display: none;"><span class="msg-content">楊浤立 君您好，<br><br>
+　　海洋大學　副校長室-　於 114/11/24 上午 00:00:00 至 114/12/13 上午 00:00:00 進行【國立臺灣海洋大學114學年度行政滿意度問卷調查表(同學)】問卷調查。請於此期限內盡速於【教學務系統】的【問卷調查系統】子系統中填寫，謝謝！<br><br>
+
+填寫問卷操作流程<br><br>
+
+　　1.使用瀏覽器（Edge, Chrome or Firefox）連結【教學務系統】<br>
+　　2.登入（需要帳號與密碼）<br>
+　　　Login（Account and Password）<br>
+　　3.點選【問卷調查系統】（位於畫面左邊）展開功能選項<br>
+　　　Click【Questionnaire System】(Located on the left screen)<br>
+　　4.點選〔填寫問卷〕功能  <br>
+　　　Click〔Fill in the questionnaire〕Function<br>
+　　5.點選〔查詢〕按鍵（位於畫面右上方）<br>
+　　　Click〔Query〕Button (Located on the top right screen)<br>
+　　6.點選查詢結果列表中問卷標題：【國立臺灣海洋大學114學年度行政滿意度問卷調查表(同學)】（必須於日期 114/11/24 上午 00:00:00 至 114/12/13 上午 00:00:00 之間才能點選） <br>
+　　7.依照畫面填寫問卷題目（有＊為必填題目）<br>
+　　8.問卷題目填寫完成後，點選〔送出〕功能（位於畫面右上角）<br><br>
+
+*** 本信件由系統自動發信，請勿直接回覆 。***</span></div>
+</div>
+<div class="msg-list">
+<div class="addordion d-flex justify-content-between align-items-center">
+<div style="position: relative; width: 100%;">
+<div class="msg-subj"><div class="date-admin"><div><i class="ri-calendar-event-fill"></i>2025/10/20 上午 11:00:52</div><div><i class="ri-user-fill"></i>教務處學術服務組蔡憶如</div></div>【課程教學評鑑】問卷_需填答人員通知</div>
+<div class="addordion-icon"><span></span><span></span></div>
+</div>
+<div class="msg-delete" onclick="deleteMsg(&quot;38657574&quot;)"><i class="ri-delete-bin-line"></i></div>
+</div>
+<div class="addordion-content" style="display: none;"><span class="msg-content">資訊工程學系 楊浤立 同學 ( 01157025 ) 您好，<br>
+
+海洋大學114學年度第1學期期中教學意見調查 於 114/10/20 至 114/10/24 實施，<br>
+
+提醒您，請於 <font color="red">114/10/24</font> 前至【教學務系統 → 教務系統 → 教學評鑑 → 填寫課程問卷】（網址：<font color="red"> https://ais.ntou.edu.tw/ </font>）填寫修課課程問卷，謝謝！<br><br>
+
+
+國立臺灣海洋大學　教務處學術服務組<br>
+ 
+聯絡電話：(02)2462 - 2192  分機：2115<br><br>
+
+
+*** 本信件由系統自動發信，請勿回覆 ***</span></div>
+</div>
+
+                                    </div>
+                                    <div class="row">
+                                        <!-- 下方分頁字串起始 -->
+                                        <div class="col-md-12 page-no-section">
+                                            
+<style>
+    /*拿掉input type=number的輸入框小箭頭*/
+    input[type=number]::-webkit-ouer-spin-button,
+    input[type=number]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type=number] {
+        -moz-appearance: textfield;
+        width: 40px;
+    }
+</style>
+<div id="PC2_ACER_PAGE_DIV" class="PageDiv">
+    <span id="PC2_PageStr"> <span onclick="gotoPage('PC2_PageNo', 1, 'doQuery', 'ReQuery')"><a href="#this" class="page-active" style="color:#FF5555;">1</a></span>  <span onclick="gotoPage('PC2_PageNo', 2, 'doQuery', 'ReQuery')"><a href="#this">2</a></span>  <span onclick="gotoPage('PC2_PageNo', 3, 'doQuery', 'ReQuery')"><a href="#this">3</a></span>  <span onclick="gotoPage('PC2_PageNo', 4, 'doQuery', 'ReQuery')"><a href="#this">4</a></span>  <span onclick="gotoPage('PC2_PageNo', 5, 'doQuery', 'ReQuery')"><a href="#this">5</a></span>  <span onclick="gotoPage('PC2_PageNo', 6, 'doQuery', 'ReQuery')"><a href="#this">6</a></span>  <span onclick="gotoPage('PC2_PageNo', 7, 'doQuery', 'ReQuery')"><a href="#this">7</a></span>  <span onclick="gotoPage('PC2_PageNo', 8, 'doQuery', 'ReQuery')"><a href="#this">8</a></span>  <span onclick="gotoPage('PC2_PageNo', 9, 'doQuery', 'ReQuery')"><a href="#this">9</a></span>  <span onclick="gotoPage('PC2_PageNo', 10, 'doQuery', 'ReQuery')"><a href="#this">10</a></span>  <span onclick="gotoPage('PC2_PageNo', 2, 'doQuery', 'ReQuery')"><a href="#this">&gt;</a></span>  <span onclick="gotoPage('PC2_PageNo', 11, 'doQuery', 'ReQuery')"><a href="#this">&gt;&gt;</a></span> </span>
+    <span id="page-num">【<span ml="CL_每頁">每頁</span>
+        <input name="PC2$PageSize" value="10" id="PC2_PageSize" type="number" size="1" iniformset="'N1';'NR'" onkeypress="_fe().onlyAllowNumPress1(event)" numberrange="1-100000" onblur="_fe().numberRngeCheck(event);if(_i(0, 'PC2_PageSize').value == ''){Message.showMessage('129');_i(0, 'PC2_PageSize').value = '10';_i(0, 'PC2_PageSize').focus();};" onkeydown="if (event.keyCode==13) _i(0, 'PC2_ShowRows').click();" style="ime-mode:disabled;">
+        <input name="PC2$ShowRows" type="button" id="PC2_ShowRows" ml="CB_筆" value="筆" class="btn" onclick="gotoPage('PC2_PageNo', null, 'doQuery', 'ReQuery', '');">
+        
+        <span>，</span>
+        <span ml="CL_第">第</span>
+        <input name="PC2$PageNo" value="1" id="PC2_PageNo" type="number" size="1" iniformset="'N1';'NR'" onkeypress="_fe().onlyAllowNumPress1(event)" numberrange="1-100000" onblur="_fe().numberRngeCheck(event);if(_i(0, 'PC2_PageNo').value == ''){Message.showMessage('130');_i(0, 'PC2_PageNo').value = '1';_i(0, 'PC2_PageNo').focus();}" onkeydown="if (event.keyCode==13) _i(0, 'PC2_ToGo').click();" style="ime-mode:disabled;">
+        <input name="PC2$ToGo" type="button" id="PC2_ToGo" ml="CB_頁" value="頁" class="btn" onclick="gotoPage('PC2_PageNo', null, 'doQuery', 'ReQuery', '');">
+        
+        <span>，</span>
+        <span ml="CL_共">共</span>
+        <span id="PC2_TotalPage">16</span>
+        <span ml="CL_頁">頁</span>
+        <span id="PC2_TotalRow">156</span>
+        <span ml="CL_筆">筆</span>】		
+    </span>
+</div>
+
+                                        </div>
+                                        <!-- 下方分頁字串結束 -->
+                                    </div>
+                                    <!-- 分頁區塊 -->
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <!-- display: none -->
+                        <div style="display: none;">
+                            <div class="col-12 d-flex mb-4">
+                                <div class="shadow-frame">
+                                    <div class="card-header has-btns">
+                                        <span ml="CL_待辦事項">待辦事項</span>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="msg-box">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <font color="#f6f9ff">Server:100 Client:49.216.93.172</font>
+
+                    <a id="ReQuery" href="javascript:__doPostBack('ReQuery','')"></a>
+                    <a id="DeleteMsgBtn" href="javascript:__doPostBack('DeleteMsgBtn','')"></a>
+                
+</div>
+        </div>
+    
+
+<script type="text/javascript">
+//<![CDATA[
+var lang	=	'ZH_TW';try{if (getTop().columnFilterRecord == null)getTop().columnFilterRecord={};}catch(ex){};var columnNameAry1 = [];var columnCodeAry1 = [];var columnIndexAry1 = [];var nonCheckQry1 = [];var recordName1 = 'Portal';var readOnlyColumn = ',,';Message.hideProcess();;try{$(_d()).ready(iniGridClickColor);$(_d()).ready(SortTable.sortables_init);}catch(ex){};try{setButtonEvent();reSize();}catch(ex){};try{switchLabel();}catch(ex){};var	proj	=	'海洋大學';try{$(_d()).ready(function(){try{gridOuterHTML=_('DataGrid').outerHTML;setColumnHide()}catch(ex){}})}catch(ex){};try{Form.iniFormColor();}catch(ex){};;//]]>
+</script>
+</form>
+    <script type="text/javascript">
+        //var paginationArea = document.querySelector(".paginationArea");
+        //產生頁碼
+        //function goPage(pno, psize) {
+        //    var card = document.querySelectorAll(".msg-list");
+        //    var cardNum = card.length; //個人訊息所有筆數
+        //    var totalPage = 0; //總頁數
+        //    var pageSize = psize; //每頁顯示筆數
+        //    //總共分幾頁
+        //    if (cardNum / pageSize > parseInt(cardNum / pageSize)) {
+        //        totalPage = parseInt(cardNum / pageSize) + 1;
+        //    } else {
+        //        totalPage = parseInt(cardNum / pageSize);
+        //    }
+        //    var currentPage = pno; //當前頁數
+        //    var startCard = (currentPage - 1) * pageSize + 1; //開始顯示的筆數
+        //    var endCard = currentPage * pageSize; //結束顯示的筆數
+        //    endCard = endCard > cardNum ? cardNum : endCard;
+        //    //顯示每一頁的個人訊息資料
+        //    for (var i = 1; i < cardNum + 1; i++) {
+        //        var iCard = card[i - 1];
+        //        if (i >= startCard && i <= endCard) {
+        //            iCard.style.display = "block";
+        //        } else {
+        //            iCard.style.display = "none";
+        //        }
+        //    }
+        //    var tempStr = "";
+        //    if (currentPage > 1) {
+        //        tempStr += `<a href="#selfMsgTitle" class="prev" onClick="goPage(1, 10)">&lt;&lt;</a>`;
+        //        tempStr += `<a href="#selfMsgTitle" class="prev" onClick="goPage((${currentPage} - 1), ${psize})">&lt;</a>`;
+        //        for (var i = 1; i <= totalPage; i++) {
+        //            tempStr += `<a href="#selfMsgTitle" class="pageNum" onClick="goPage(${i}, ${psize})">${i}</a>`;
+        //        }
+        //    } else {
+        //        tempStr += `<a class="prev" style="cursor: default;">&lt;&lt;</a>`;
+        //        tempStr += `<a class="prev" style="cursor: default;">&lt;</a>`;
+        //        for (var i = 1; i <= totalPage; i++) {
+        //            tempStr += `<a href="#selfMsgTitle" class="pageNum" onClick="goPage(${i}, ${psize})">${i}</a>`;
+        //        }
+        //    }
+        //    if (currentPage < totalPage) {
+        //        tempStr += `<a href="#selfMsgTitle" class="next" onClick="goPage((${currentPage} + 1), ${psize})">&gt;</a>`;
+        //        tempStr += `<a href="#selfMsgTitle" class="next" onClick="goPage(${totalPage}, ${psize})">&gt;&gt;</a>`;
+        //    } else {
+        //        tempStr += `<a class="next" style="cursor: default;">&gt;</a>`;
+        //        tempStr += `<a class="next" style="cursor: default;">&gt;&gt;</a>`;
+        //    }
+        //    paginationArea.innerHTML = tempStr;
+        //    document.querySelectorAll(".pageNum")[currentPage - 1].classList.add("pActive");
+        //}
+    </script>
+
+
+<div id="__SuccessWindow" style="z-index: 9999999; left: 64px; visibility: hidden; width: 250px; position: fixed; top: 0px; height: 120px;"></div><div id="__Calendar" style="width:250px;position:absolute;top:0px;left:0px;display:none;z-index:99"></div><div id="__SuccessWindow" style="z-index: 9999999; left: 64px; visibility: hidden; width: 250px; position: fixed; top: 0px; height: 120px;"></div><div id="__SuccessWindow" style="z-index: 9999999; left: 64px; visibility: hidden; width: 250px; position: fixed; top: 0px; height: 120px;"></div></body></html>
