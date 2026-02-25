@@ -23,6 +23,12 @@ print("成功連接到瀏覽器！")
 
 def grab_course():
     try:
+        # 遍歷所有分頁，切換到標題包含 "選課" 或特定關鍵字的頁面
+        for handle in driver.window_handles:
+            driver.switch_to.window(handle)
+            if "海洋大學" in driver.title: # 請替換成你學校選課系統實際的標題關鍵字
+                print(f"已鎖定分頁: {driver.title}")
+                break
         while True: # 無限迴圈
             try:
                 print(f"[{time.strftime('%H:%M:%S')}] 正在掃描課程: {TARGET_COURSE_ID}...")
@@ -93,7 +99,7 @@ def grab_course():
             except TimeoutException:
                 # 找不到加選按鈕 (可能還沒釋出)
                 print("找不到加選按鈕 (可能未釋出或網頁延遲)，重新整理...")
-                time.sleep(10)
+                time.sleep(2)
                 driver.refresh()
                 continue # 重整後繼續下一輪
             
